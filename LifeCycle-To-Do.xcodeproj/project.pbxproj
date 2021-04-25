@@ -17,6 +17,9 @@
 		414DAE13262E9F5F00AB5E38 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414DAE12262E9F5F00AB5E38 /* LoginTableViewController.swift */; };
 		415AC826263008DE00D26339 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AC825263008DE00D26339 /* Task.swift */; };
 		415AC82A263009EE00D26339 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AC829263009EE00D26339 /* User.swift */; };
+		4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */; };
+		41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F82A2632A215009D9170 /* TodayTableViewController.swift */; };
+		41E3F8322632A67A009D9170 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F8312632A67A009D9170 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		414DAE12262E9F5F00AB5E38 /* LoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		415AC825263008DE00D26339 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		415AC829263009EE00D26339 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		41E3F82A2632A215009D9170 /* TodayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
+		41E3F8312632A67A009D9170 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				414DAE12262E9F5F00AB5E38 /* LoginTableViewController.swift */,
+				41E3F82A2632A215009D9170 /* TodayTableViewController.swift */,
+				4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -91,6 +99,7 @@
 			children = (
 				415AC825263008DE00D26339 /* Task.swift */,
 				415AC829263009EE00D26339 /* User.swift */,
+				41E3F8312632A67A009D9170 /* Habit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,11 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */,
 				414DAE13262E9F5F00AB5E38 /* LoginTableViewController.swift in Sources */,
+				41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */,
 				414DAE04262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld in Sources */,
 				414DADFE262E9F1E00AB5E38 /* ViewController.swift in Sources */,
 				414DADFA262E9F1E00AB5E38 /* AppDelegate.swift in Sources */,
 				415AC826263008DE00D26339 /* Task.swift in Sources */,
+				41E3F8322632A67A009D9170 /* Habit.swift in Sources */,
 				414DADFC262E9F1E00AB5E38 /* SceneDelegate.swift in Sources */,
 				415AC82A263009EE00D26339 /* User.swift in Sources */,
 			);
