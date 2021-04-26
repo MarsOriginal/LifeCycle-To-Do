@@ -20,9 +20,6 @@ class LoginTableViewController: UITableViewController {
     @IBOutlet weak var passworTextField: UITextField!
     
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
-    
     
     
     override func viewDidLoad() {
@@ -35,14 +32,12 @@ class LoginTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    @IBAction func loginAction(_ sender: UIButton) {
-        
-    }
 
-    @IBAction func registerAction(_ sender: UIButton) {
-        
+    @IBAction func login(_ sender: Any) {
     }
-
+    
+    @IBAction func register(_ sender: Any) {
+    }
     
     // MARK: - Table view data source
 

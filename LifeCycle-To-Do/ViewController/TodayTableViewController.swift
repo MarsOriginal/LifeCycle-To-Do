@@ -9,10 +9,12 @@ import UIKit
 
 class TodayTableViewController: UITableViewController {
     
-    let SECTION_FITNESS = 0
-    let SECTION_HABIT = 1
-    let SECTION_REMINDER = 2
+    let SECTION_MANAGE = 0
+    let SECTION_FITNESS = 1
+    let SECTION_HABIT = 2
+    let SECTION_REMINDER = 3
     
+    let CELL_MANAGE = "manageCell"
     let CELL_FITNESS = "fitnessCell"
     let CELL_HABIT = "habitCell"
     let CELL_REMINDER = "reminderCell"
@@ -34,12 +36,14 @@ class TodayTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if section == SECTION_FITNESS {
+        if section == SECTION_MANAGE {
+            return 1
+        }
+        else if section == SECTION_FITNESS {
             return 1
         }
         else if section == SECTION_HABIT {

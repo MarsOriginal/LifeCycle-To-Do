@@ -19,6 +19,9 @@
                             <rect key="frame" x="0.0" y="202.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="No Account? Register now"/>
+                            <connections>
+                                <action selector="register:" destination="wFs-6N-aSG" eventType="touchUpInside" id="oIT-Jn-fSw"/>
+                            </connections>
                         </button>
                         <sections>
                             <tableViewSection id="GGi-Ea-ThH">
@@ -96,6 +99,9 @@
                                                     <state key="normal" title="Login">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="login:" destination="wFs-6N-aSG" eventType="touchUpInside" id="WYt-ah-j8A"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -117,9 +123,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="6lD-53-2j7"/>
                     <connections>
-                        <outlet property="loginButton" destination="W2D-YS-RKd" id="U88-wU-tC3"/>
                         <outlet property="passworTextField" destination="gQA-XY-zju" id="7mZ-AW-cGY"/>
-                        <outlet property="registerButton" destination="Y9b-Us-pQi" id="unj-9F-Wuz"/>
                         <outlet property="userNameTextField" destination="oa5-K7-qaW" id="hfV-lV-eSe"/>
                     </connections>
                 </tableViewController>
@@ -182,27 +186,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="steps / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="215-fz-KEk">
-                                                    <rect key="frame" x="20" y="11" width="50" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="steps / " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="215-fz-KEk">
+                                                    <rect key="frame" x="16" y="11" width="50" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vpw-yR-Wxo">
-                                                    <rect key="frame" x="77" y="5" width="97" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vpw-yR-Wxo">
+                                                    <rect key="frame" x="66" y="0.0" width="41.333333333333343" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntD-Ow-LqN">
-                                                    <rect key="frame" x="134" y="25" width="33" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntD-Ow-LqN">
+                                                    <rect key="frame" x="300" y="0.0" width="33" height="44"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="215-fz-KEk" firstAttribute="top" secondItem="GhJ-yf-38P" secondAttribute="topMargin" id="41k-lZ-Wwg"/>
+                                                <constraint firstItem="Vpw-yR-Wxo" firstAttribute="leading" secondItem="215-fz-KEk" secondAttribute="trailing" id="9qC-hd-ZkM"/>
+                                                <constraint firstAttribute="trailing" secondItem="ntD-Ow-LqN" secondAttribute="trailing" constant="10" id="LYr-ea-0yp"/>
+                                                <constraint firstItem="215-fz-KEk" firstAttribute="leading" secondItem="GhJ-yf-38P" secondAttribute="leadingMargin" id="Sr4-2Z-w43"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="215-fz-KEk" secondAttribute="bottom" id="Tv0-mw-ShI"/>
+                                                <constraint firstAttribute="bottom" secondItem="ntD-Ow-LqN" secondAttribute="bottom" id="YOO-yC-kxF"/>
+                                                <constraint firstItem="Vpw-yR-Wxo" firstAttribute="top" secondItem="GhJ-yf-38P" secondAttribute="top" id="YQ9-Gz-gpY"/>
+                                                <constraint firstItem="ntD-Ow-LqN" firstAttribute="top" secondItem="GhJ-yf-38P" secondAttribute="top" id="mc1-nN-H60"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vpw-yR-Wxo" secondAttribute="bottom" id="rt2-kX-nf7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -292,7 +304,7 @@
         <!--My Profile-->
         <scene sceneID="rac-NH-1TL">
             <objects>
-                <viewController id="1Bq-Te-W2I" sceneMemberID="viewController">
+                <viewController id="1Bq-Te-W2I" customClass="MyProfileViewController" customModule="LifeCycle_To_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5H6-a5-jsG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +374,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Profile" id="Kfq-oE-e4z">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" style="plain" id="ERP-yn-goi">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="ERP-yn-goi">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="q0N-sE-7cu">
                                 <rect key="frame" x="267" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,7 +390,8 @@
         <!--Focus-->
         <scene sceneID="kwd-Wa-9Rn">
             <objects>
-                <viewController id="scw-AQ-VGX" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tEx-yu-Kbl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="scw-AQ-VGX" customClass="FocusViewController" customModule="LifeCycle_To_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XHd-ec-J43">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -429,85 +442,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Focus" id="A4w-Sk-Qgf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" style="plain" id="oyf-9h-X26">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="square.and.pencil" catalog="system" id="WgD-Dh-B9N">
                             <connections>
-                                <segue destination="wjl-tZ-cU0" kind="show" id="zxO-bi-BjO"/>
+                                <action selector="edit:" destination="scw-AQ-VGX" id="c5Z-er-ts2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tEx-yu-Kbl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4207" y="1807"/>
-        </scene>
-        <!--Set Tomato Clock-->
-        <scene sceneID="1qR-0v-vTx">
-            <objects>
-                <viewController id="wjl-tZ-cU0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ysm-nJ-uza">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98V-hG-CxZ">
-                                <rect key="frame" x="127.33333333333331" y="231" width="50" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="K6L-G5-VYe"/>
-                                    <constraint firstAttribute="height" constant="34" id="Z9t-1z-aGR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efm-gE-8sd">
-                                <rect key="frame" x="198" y="231" width="50" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="FmA-dI-GHY"/>
-                                    <constraint firstAttribute="height" constant="34" id="NAz-7Q-2MK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejv-VV-Wgb">
-                                <rect key="frame" x="185" y="238" width="5" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a New Tomato Clock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-Z4-00e">
-                                <rect key="frame" x="84.000000000000014" y="175" width="207.33333333333337" height="22"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended duration is 45 minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lg-2Z-1rH">
-                                <rect key="frame" x="88" y="279" width="199" height="14"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="JSd-p4-MEX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gEg-Z4-00e" firstAttribute="centerX" secondItem="Ysm-nJ-uza" secondAttribute="centerX" id="21t-So-lay"/>
-                            <constraint firstItem="98V-hG-CxZ" firstAttribute="top" secondItem="gEg-Z4-00e" secondAttribute="bottom" constant="34" id="AZi-GL-UDL"/>
-                            <constraint firstItem="JSd-p4-MEX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ejv-VV-Wgb" secondAttribute="centerX" id="IXU-p4-CIc"/>
-                            <constraint firstItem="JSd-p4-MEX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Lg-2Z-1rH" secondAttribute="trailing" symbolic="YES" id="M2H-hE-3KF"/>
-                            <constraint firstItem="JSd-p4-MEX" firstAttribute="trailing" secondItem="Efm-gE-8sd" secondAttribute="trailing" constant="127" id="RGk-Hg-5Fy"/>
-                            <constraint firstItem="Ejv-VV-Wgb" firstAttribute="centerY" secondItem="Efm-gE-8sd" secondAttribute="centerY" id="Wh0-Gq-vyr"/>
-                            <constraint firstItem="Efm-gE-8sd" firstAttribute="leading" secondItem="Ejv-VV-Wgb" secondAttribute="trailing" constant="7.9999999999999716" id="WqQ-s4-h6G"/>
-                            <constraint firstItem="Ejv-VV-Wgb" firstAttribute="top" secondItem="gEg-Z4-00e" secondAttribute="bottom" constant="41" id="YAL-3b-Ep5"/>
-                            <constraint firstItem="98V-hG-CxZ" firstAttribute="leading" secondItem="JSd-p4-MEX" secondAttribute="leading" constant="127.33333333333331" id="m29-Me-q8o"/>
-                            <constraint firstItem="5Lg-2Z-1rH" firstAttribute="top" secondItem="Ejv-VV-Wgb" secondAttribute="bottom" constant="21" id="pmG-t5-PfE"/>
-                            <constraint firstItem="gEg-Z4-00e" firstAttribute="top" secondItem="JSd-p4-MEX" secondAttribute="top" constant="87" id="s14-sR-yO9"/>
-                            <constraint firstItem="5Lg-2Z-1rH" firstAttribute="leading" secondItem="Ejv-VV-Wgb" secondAttribute="centerX" constant="-99.5" id="smy-oO-ah8"/>
-                            <constraint firstItem="Ejv-VV-Wgb" firstAttribute="centerX" secondItem="JSd-p4-MEX" secondAttribute="centerX" id="zN9-Id-T1a"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Set Tomato Clock" id="c7W-hL-Yfi"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hzs-dA-b0j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5080.8000000000002" y="1806.6502463054187"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zeC-4w-exb">
@@ -571,7 +514,7 @@
         <scene sceneID="juD-r4-QpQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EGf-nA-EoS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Focus" image="aqi.medium" catalog="system" id="OTs-xc-0yq"/>
+                    <tabBarItem key="tabBarItem" title="Focus" image="timelapse" catalog="system" id="OTs-xc-0yq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsK-Q0-cio">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -589,7 +532,7 @@
         <!--Add Task-->
         <scene sceneID="8wu-Ks-evL">
             <objects>
-                <viewController id="wIT-hp-GZT" customClass="TaskDetailsViewController" customModule="To_Do" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wIT-hp-GZT" customClass="AddTaskViewController" customModule="LifeCycle_To_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LQ1-Kn-m0T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -635,7 +578,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Task" largeTitleDisplayMode="never" id="BVh-5c-TdU">
-                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="mZC-OK-0aE">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="mZC-OK-0aE">
                             <connections>
                                 <action selector="saveTapped:" destination="wIT-hp-GZT" id="iO6-QB-qgg"/>
                             </connections>
@@ -653,7 +596,7 @@
         <!--Add Habit-->
         <scene sceneID="Z9k-an-MXv">
             <objects>
-                <viewController id="Nn8-gd-1xh" customClass="TaskDetailsViewController" customModule="To_Do" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nn8-gd-1xh" customClass="AddHabitViewController" customModule="LifeCycle_To_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zYi-d5-OhG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -682,7 +625,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Habit" largeTitleDisplayMode="never" id="dRS-Fk-pVu">
-                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="TUh-uF-pHH">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="TUh-uF-pHH">
                             <connections>
                                 <action selector="saveTapped:" destination="Nn8-gd-1xh" id="RK1-js-BiM"/>
                             </connections>
@@ -700,13 +643,13 @@
     </scenes>
     <resources>
         <image name="LifeCycle_ICON" width="369" height="369"/>
-        <image name="aqi.medium" catalog="system" width="128" height="125"/>
         <image name="baseline_task_alt_black_18pt" width="18" height="18"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="list.bullet.below.rectangle" catalog="system" width="128" height="112"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="timelapse" catalog="system" width="128" height="122"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

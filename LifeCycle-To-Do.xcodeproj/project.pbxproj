@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		414DADFA262E9F1E00AB5E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414DADF9262E9F1E00AB5E38 /* AppDelegate.swift */; };
 		414DADFC262E9F1E00AB5E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414DADFB262E9F1E00AB5E38 /* SceneDelegate.swift */; };
-		414DADFE262E9F1E00AB5E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414DADFD262E9F1E00AB5E38 /* ViewController.swift */; };
 		414DAE01262E9F1E00AB5E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 414DADFF262E9F1E00AB5E38 /* Main.storyboard */; };
 		414DAE04262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 414DAE02262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld */; };
 		414DAE06262E9F1F00AB5E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 414DAE05262E9F1F00AB5E38 /* Assets.xcassets */; };
@@ -18,6 +17,9 @@
 		415AC826263008DE00D26339 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AC825263008DE00D26339 /* Task.swift */; };
 		415AC82A263009EE00D26339 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415AC829263009EE00D26339 /* User.swift */; };
 		4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */; };
+		4162C1AF263664840091E9AF /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1AE263664840091E9AF /* FocusViewController.swift */; };
+		4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */; };
+		4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */; };
 		41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F82A2632A215009D9170 /* TodayTableViewController.swift */; };
 		41E3F8322632A67A009D9170 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F8312632A67A009D9170 /* Habit.swift */; };
 /* End PBXBuildFile section */
@@ -26,7 +28,6 @@
 		414DADF6262E9F1E00AB5E38 /* LifeCycle-To-Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LifeCycle-To-Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		414DADF9262E9F1E00AB5E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		414DADFB262E9F1E00AB5E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		414DADFD262E9F1E00AB5E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		414DAE00262E9F1E00AB5E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		414DAE03262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LifeCycle_To_Do.xcdatamodel; sourceTree = "<group>"; };
 		414DAE05262E9F1F00AB5E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +37,9 @@
 		415AC825263008DE00D26339 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		415AC829263009EE00D26339 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		4162C1AE263664840091E9AF /* FocusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusViewController.swift; sourceTree = "<group>"; };
+		4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 		41E3F82A2632A215009D9170 /* TodayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 		41E3F8312632A67A009D9170 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +78,6 @@
 				414DAE11262E9F4B00AB5E38 /* ViewController */,
 				414DADF9262E9F1E00AB5E38 /* AppDelegate.swift */,
 				414DADFB262E9F1E00AB5E38 /* SceneDelegate.swift */,
-				414DADFD262E9F1E00AB5E38 /* ViewController.swift */,
 				414DADFF262E9F1E00AB5E38 /* Main.storyboard */,
 				414DAE05262E9F1F00AB5E38 /* Assets.xcassets */,
 				414DAE07262E9F1F00AB5E38 /* LaunchScreen.storyboard */,
@@ -90,6 +93,9 @@
 				414DAE12262E9F5F00AB5E38 /* LoginTableViewController.swift */,
 				41E3F82A2632A215009D9170 /* TodayTableViewController.swift */,
 				4162C1AB26352EDB0091E9AF /* MyProfileViewController.swift */,
+				4162C1AE263664840091E9AF /* FocusViewController.swift */,
+				4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */,
+				4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -174,15 +180,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */,
 				4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */,
 				414DAE13262E9F5F00AB5E38 /* LoginTableViewController.swift in Sources */,
 				41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */,
 				414DAE04262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld in Sources */,
-				414DADFE262E9F1E00AB5E38 /* ViewController.swift in Sources */,
 				414DADFA262E9F1E00AB5E38 /* AppDelegate.swift in Sources */,
 				415AC826263008DE00D26339 /* Task.swift in Sources */,
 				41E3F8322632A67A009D9170 /* Habit.swift in Sources */,
 				414DADFC262E9F1E00AB5E38 /* SceneDelegate.swift in Sources */,
+				4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */,
+				4162C1AF263664840091E9AF /* FocusViewController.swift in Sources */,
 				415AC82A263009EE00D26339 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
