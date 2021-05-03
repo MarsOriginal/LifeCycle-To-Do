@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  LifeCycle-To-Do
 //
-//  Created by MARS on 27/4/21.
+//  Created by MARS on 1/5/21.
 //
 //
 
@@ -17,8 +17,8 @@ extension Task {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var fromTime: Date?
     @NSManaged public var toTime: Date?
+    @NSManaged public var user: User?
 
 }
 

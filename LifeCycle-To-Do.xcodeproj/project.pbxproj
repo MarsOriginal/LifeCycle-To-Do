@@ -19,15 +19,17 @@
 		4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */; };
 		4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */; };
 		4162C1EF2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1ED2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld */; };
-		4162C1F82637CF570091E9AF /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F22637CF570091E9AF /* Task+CoreDataClass.swift */; };
-		4162C1F92637CF570091E9AF /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F32637CF570091E9AF /* Task+CoreDataProperties.swift */; };
-		4162C1FA2637CF570091E9AF /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F42637CF570091E9AF /* User+CoreDataClass.swift */; };
-		4162C1FB2637CF570091E9AF /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F52637CF570091E9AF /* User+CoreDataProperties.swift */; };
-		4162C1FC2637CF570091E9AF /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F62637CF570091E9AF /* Habit+CoreDataClass.swift */; };
-		4162C1FD2637CF570091E9AF /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1F72637CF570091E9AF /* Habit+CoreDataProperties.swift */; };
 		4162C2002637CFFA0091E9AF /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1FF2637CFFA0091E9AF /* MulticastDelegate.swift */; };
 		4162C2052637D0C00091E9AF /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C2042637D0C00091E9AF /* DatabaseProtocol.swift */; };
 		4162C2082637D2400091E9AF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C2072637D2400091E9AF /* CoreDataController.swift */; };
+		41C494B1263CE89800215481 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */; };
+		41C494B2263CE89800215481 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */; };
+		41C494B3263CE89800215481 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AD263CE89800215481 /* User+CoreDataClass.swift */; };
+		41C494B4263CE89800215481 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AE263CE89800215481 /* User+CoreDataProperties.swift */; };
+		41C494B5263CE89800215481 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AF263CE89800215481 /* Task+CoreDataClass.swift */; };
+		41C494B6263CE89800215481 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */; };
+		41C494B8263CEA8C00215481 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */; };
+		41C494BA263CEA9B00215481 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */; };
 		41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F82A2632A215009D9170 /* TodayTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,15 +48,17 @@
 		4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
 		4162C1EE2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LifeCycle-DataModel.xcdatamodel"; sourceTree = "<group>"; };
-		4162C1F22637CF570091E9AF /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4162C1F32637CF570091E9AF /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4162C1F42637CF570091E9AF /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4162C1F52637CF570091E9AF /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4162C1F62637CF570091E9AF /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4162C1F72637CF570091E9AF /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4162C1FF2637CFFA0091E9AF /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		4162C2042637D0C00091E9AF /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		4162C2072637D2400091E9AF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41C494AD263CE89800215481 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41C494AE263CE89800215481 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41C494AF263CE89800215481 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		41E3F82A2632A215009D9170 /* TodayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +115,8 @@
 				4162C1AE263664840091E9AF /* FocusViewController.swift */,
 				4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */,
 				4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */,
+				41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */,
+				41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -118,12 +124,12 @@
 		415AC8242630089700D26339 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4162C1F22637CF570091E9AF /* Task+CoreDataClass.swift */,
-				4162C1F32637CF570091E9AF /* Task+CoreDataProperties.swift */,
-				4162C1F42637CF570091E9AF /* User+CoreDataClass.swift */,
-				4162C1F52637CF570091E9AF /* User+CoreDataProperties.swift */,
-				4162C1F62637CF570091E9AF /* Habit+CoreDataClass.swift */,
-				4162C1F72637CF570091E9AF /* Habit+CoreDataProperties.swift */,
+				41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */,
+				41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */,
+				41C494AD263CE89800215481 /* User+CoreDataClass.swift */,
+				41C494AE263CE89800215481 /* User+CoreDataProperties.swift */,
+				41C494AF263CE89800215481 /* Task+CoreDataClass.swift */,
+				41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */,
 				4162C1ED2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld */,
 			);
 			path = Model;
@@ -209,22 +215,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C494B1263CE89800215481 /* Habit+CoreDataClass.swift in Sources */,
 				4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */,
+				41C494B8263CEA8C00215481 /* TaskTableViewCell.swift in Sources */,
 				4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */,
 				414DAE13262E9F5F00AB5E38 /* LoginTableViewController.swift in Sources */,
-				4162C1FA2637CF570091E9AF /* User+CoreDataClass.swift in Sources */,
+				41C494B6263CE89800215481 /* Task+CoreDataProperties.swift in Sources */,
 				41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */,
 				414DAE04262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld in Sources */,
+				41C494BA263CEA9B00215481 /* HabitTableViewCell.swift in Sources */,
+				41C494B5263CE89800215481 /* Task+CoreDataClass.swift in Sources */,
 				414DADFA262E9F1E00AB5E38 /* AppDelegate.swift in Sources */,
 				4162C1EF2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld in Sources */,
 				4162C2052637D0C00091E9AF /* DatabaseProtocol.swift in Sources */,
+				41C494B4263CE89800215481 /* User+CoreDataProperties.swift in Sources */,
 				414DADFC262E9F1E00AB5E38 /* SceneDelegate.swift in Sources */,
-				4162C1FC2637CF570091E9AF /* Habit+CoreDataClass.swift in Sources */,
-				4162C1F82637CF570091E9AF /* Task+CoreDataClass.swift in Sources */,
-				4162C1FB2637CF570091E9AF /* User+CoreDataProperties.swift in Sources */,
-				4162C1FD2637CF570091E9AF /* Habit+CoreDataProperties.swift in Sources */,
 				4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */,
-				4162C1F92637CF570091E9AF /* Task+CoreDataProperties.swift in Sources */,
+				41C494B2263CE89800215481 /* Habit+CoreDataProperties.swift in Sources */,
+				41C494B3263CE89800215481 /* User+CoreDataClass.swift in Sources */,
 				4162C2082637D2400091E9AF /* CoreDataController.swift in Sources */,
 				4162C2002637CFFA0091E9AF /* MulticastDelegate.swift in Sources */,
 				4162C1AF263664840091E9AF /* FocusViewController.swift in Sources */,

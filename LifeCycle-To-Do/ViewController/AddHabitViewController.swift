@@ -8,12 +8,28 @@
 import UIKit
 
 class AddHabitViewController: UIViewController {
+    @IBOutlet weak var habitNameTextField: UITextField!
+    
+    weak var databaseController: DatabaseProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
     }
+    
+    @IBAction func addHabit(_ sender: Any) {
+        if let name = habitNameTextField.text, !name.isEmpty {
+            let _ = databaseController?.addHabit(name: name)
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        // add some error Msg
+
+    }
+    
     
 
     /*

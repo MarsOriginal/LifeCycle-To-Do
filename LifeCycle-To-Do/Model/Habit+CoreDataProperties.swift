@@ -2,7 +2,7 @@
 //  Habit+CoreDataProperties.swift
 //  LifeCycle-To-Do
 //
-//  Created by MARS on 27/4/21.
+//  Created by MARS on 1/5/21.
 //
 //
 
@@ -16,8 +16,9 @@ extension Habit {
         return NSFetchRequest<Habit>(entityName: "Habit")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var days: Int16
+    @NSManaged public var name: String?
+    @NSManaged public var user: User?
 
 }
 
