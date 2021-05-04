@@ -9,8 +9,8 @@ import UIKit
 
 class FocusViewController: UIViewController {
     
-    var duration: Int!
-
+    @IBOutlet weak var durationLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +26,18 @@ class FocusViewController: UIViewController {
         let submitAction = UIAlertAction(title: "Submit", style: UIAlertAction.Style.default) {
             (action) -> Void in
               if let duration = durationTextField?.text {
+                if Int(duration)! > 0 && Int(duration)! < 60 {
+                    self.durationLabel.text = "00:\(duration):00"
+                }
+                else if Int(duration)! > 60 {
+                    let hours = Int(duration)! / 60
+                    let mins = Int(duration)! % 60
+                    self.durationLabel.text = "\(hours):\(mins):00"
+                }
+                else{
+                    print("Please enter valid duration")
+                }
+
               } else {
                 print("Please enter valid duration")
               }
@@ -37,7 +49,6 @@ class FocusViewController: UIViewController {
             durationTextField = textDuration
             durationTextField!.placeholder = "Duration"
         }
-        
         alertController.addAction(submitAction)
         self.present(alertController, animated: true, completion: nil)
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,18 +18,16 @@
 		4162C1AF263664840091E9AF /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1AE263664840091E9AF /* FocusViewController.swift */; };
 		4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */; };
 		4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */; };
-		4162C1EF2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1ED2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld */; };
 		4162C2002637CFFA0091E9AF /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C1FF2637CFFA0091E9AF /* MulticastDelegate.swift */; };
 		4162C2052637D0C00091E9AF /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C2042637D0C00091E9AF /* DatabaseProtocol.swift */; };
-		4162C2082637D2400091E9AF /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162C2072637D2400091E9AF /* CoreDataController.swift */; };
-		41C494B1263CE89800215481 /* Habit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */; };
-		41C494B2263CE89800215481 /* Habit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */; };
-		41C494B3263CE89800215481 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AD263CE89800215481 /* User+CoreDataClass.swift */; };
-		41C494B4263CE89800215481 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AE263CE89800215481 /* User+CoreDataProperties.swift */; };
-		41C494B5263CE89800215481 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494AF263CE89800215481 /* Task+CoreDataClass.swift */; };
-		41C494B6263CE89800215481 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */; };
-		41C494B8263CEA8C00215481 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */; };
-		41C494BA263CEA9B00215481 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */; };
+		41D5A2FA263F901400DD8701 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 41D5A2F9263F901400DD8701 /* FirebaseAuth */; };
+		41D5A2FC263F901400DD8701 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 41D5A2FB263F901400DD8701 /* FirebaseFirestore */; };
+		41D5A2FE263F901400DD8701 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 41D5A2FD263F901400DD8701 /* FirebaseFirestoreSwift-Beta */; };
+		41D5A300263FC77300DD8701 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41D5A2FF263FC77300DD8701 /* GoogleService-Info.plist */; };
+		41D5A303263FCBFC00DD8701 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5A302263FCBFC00DD8701 /* Habit.swift */; };
+		41D5A305263FCC0800DD8701 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5A304263FCC0800DD8701 /* Task.swift */; };
+		41D5A307263FCE2F00DD8701 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5A306263FCE2F00DD8701 /* FirebaseController.swift */; };
+		41D5A309263FE51D00DD8701 /* UIViewController+displayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5A308263FE51D00DD8701 /* UIViewController+displayMessage.swift */; };
 		41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3F82A2632A215009D9170 /* TodayTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,18 +45,13 @@
 		4162C1AE263664840091E9AF /* FocusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusViewController.swift; sourceTree = "<group>"; };
 		4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitViewController.swift; sourceTree = "<group>"; };
-		4162C1EE2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LifeCycle-DataModel.xcdatamodel"; sourceTree = "<group>"; };
 		4162C1FF2637CFFA0091E9AF /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		4162C2042637D0C00091E9AF /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
-		4162C2072637D2400091E9AF /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		41C494AD263CE89800215481 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		41C494AE263CE89800215481 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		41C494AF263CE89800215481 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		41D5A2FF263FC77300DD8701 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		41D5A302263FCBFC00DD8701 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		41D5A304263FCC0800DD8701 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		41D5A306263FCE2F00DD8701 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		41D5A308263FE51D00DD8701 /* UIViewController+displayMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayMessage.swift"; sourceTree = "<group>"; };
 		41E3F82A2632A215009D9170 /* TodayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D5A2FE263F901400DD8701 /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				41D5A2FA263F901400DD8701 /* FirebaseAuth in Frameworks */,
+				41D5A2FC263F901400DD8701 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,14 +88,15 @@
 		414DADF8262E9F1E00AB5E38 /* LifeCycle-To-Do */ = {
 			isa = PBXGroup;
 			children = (
+				41D5A301263FCBD300DD8701 /* DataModel */,
 				4162C2032637D0950091E9AF /* Database */,
-				415AC8242630089700D26339 /* Model */,
 				414DAE11262E9F4B00AB5E38 /* ViewController */,
 				414DADF9262E9F1E00AB5E38 /* AppDelegate.swift */,
 				414DADFB262E9F1E00AB5E38 /* SceneDelegate.swift */,
 				414DADFF262E9F1E00AB5E38 /* Main.storyboard */,
 				414DAE05262E9F1F00AB5E38 /* Assets.xcassets */,
 				414DAE07262E9F1F00AB5E38 /* LaunchScreen.storyboard */,
+				41D5A2FF263FC77300DD8701 /* GoogleService-Info.plist */,
 				414DAE0A262E9F1F00AB5E38 /* Info.plist */,
 				414DAE02262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld */,
 			);
@@ -115,24 +112,9 @@
 				4162C1AE263664840091E9AF /* FocusViewController.swift */,
 				4162C1B42636D3F00091E9AF /* AddTaskViewController.swift */,
 				4162C1B72636D3FC0091E9AF /* AddHabitViewController.swift */,
-				41C494B7263CEA8C00215481 /* TaskTableViewCell.swift */,
-				41C494B9263CEA9B00215481 /* HabitTableViewCell.swift */,
+				41D5A308263FE51D00DD8701 /* UIViewController+displayMessage.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		415AC8242630089700D26339 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				41C494AB263CE89800215481 /* Habit+CoreDataClass.swift */,
-				41C494AC263CE89800215481 /* Habit+CoreDataProperties.swift */,
-				41C494AD263CE89800215481 /* User+CoreDataClass.swift */,
-				41C494AE263CE89800215481 /* User+CoreDataProperties.swift */,
-				41C494AF263CE89800215481 /* Task+CoreDataClass.swift */,
-				41C494B0263CE89800215481 /* Task+CoreDataProperties.swift */,
-				4162C1ED2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4162C2032637D0950091E9AF /* Database */ = {
@@ -140,9 +122,18 @@
 			children = (
 				4162C1FF2637CFFA0091E9AF /* MulticastDelegate.swift */,
 				4162C2042637D0C00091E9AF /* DatabaseProtocol.swift */,
-				4162C2072637D2400091E9AF /* CoreDataController.swift */,
+				41D5A306263FCE2F00DD8701 /* FirebaseController.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		41D5A301263FCBD300DD8701 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				41D5A302263FCBFC00DD8701 /* Habit.swift */,
+				41D5A304263FCC0800DD8701 /* Task.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +152,11 @@
 			dependencies = (
 			);
 			name = "LifeCycle-To-Do";
+			packageProductDependencies = (
+				41D5A2F9263F901400DD8701 /* FirebaseAuth */,
+				41D5A2FB263F901400DD8701 /* FirebaseFirestore */,
+				41D5A2FD263F901400DD8701 /* FirebaseFirestoreSwift-Beta */,
+			);
 			productName = "LifeCycle-To-Do";
 			productReference = 414DADF6262E9F1E00AB5E38 /* LifeCycle-To-Do.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 414DADED262E9F1E00AB5E38;
+			packageReferences = (
+				41D5A2F8263F901400DD8701 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 414DADF7262E9F1E00AB5E38 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				414DAE09262E9F1F00AB5E38 /* LaunchScreen.storyboard in Resources */,
+				41D5A300263FC77300DD8701 /* GoogleService-Info.plist in Resources */,
 				414DAE06262E9F1F00AB5E38 /* Assets.xcassets in Resources */,
 				414DAE01262E9F1E00AB5E38 /* Main.storyboard in Resources */,
 			);
@@ -215,25 +215,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C494B1263CE89800215481 /* Habit+CoreDataClass.swift in Sources */,
 				4162C1B52636D3F00091E9AF /* AddTaskViewController.swift in Sources */,
-				41C494B8263CEA8C00215481 /* TaskTableViewCell.swift in Sources */,
+				41D5A309263FE51D00DD8701 /* UIViewController+displayMessage.swift in Sources */,
 				4162C1AC26352EDB0091E9AF /* MyProfileViewController.swift in Sources */,
 				414DAE13262E9F5F00AB5E38 /* LoginTableViewController.swift in Sources */,
-				41C494B6263CE89800215481 /* Task+CoreDataProperties.swift in Sources */,
 				41E3F82B2632A215009D9170 /* TodayTableViewController.swift in Sources */,
 				414DAE04262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld in Sources */,
-				41C494BA263CEA9B00215481 /* HabitTableViewCell.swift in Sources */,
-				41C494B5263CE89800215481 /* Task+CoreDataClass.swift in Sources */,
+				41D5A303263FCBFC00DD8701 /* Habit.swift in Sources */,
+				41D5A307263FCE2F00DD8701 /* FirebaseController.swift in Sources */,
+				41D5A305263FCC0800DD8701 /* Task.swift in Sources */,
 				414DADFA262E9F1E00AB5E38 /* AppDelegate.swift in Sources */,
-				4162C1EF2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld in Sources */,
 				4162C2052637D0C00091E9AF /* DatabaseProtocol.swift in Sources */,
-				41C494B4263CE89800215481 /* User+CoreDataProperties.swift in Sources */,
 				414DADFC262E9F1E00AB5E38 /* SceneDelegate.swift in Sources */,
 				4162C1B82636D3FC0091E9AF /* AddHabitViewController.swift in Sources */,
-				41C494B2263CE89800215481 /* Habit+CoreDataProperties.swift in Sources */,
-				41C494B3263CE89800215481 /* User+CoreDataClass.swift in Sources */,
-				4162C2082637D2400091E9AF /* CoreDataController.swift in Sources */,
 				4162C2002637CFFA0091E9AF /* MulticastDelegate.swift in Sources */,
 				4162C1AF263664840091E9AF /* FocusViewController.swift in Sources */,
 			);
@@ -438,6 +432,35 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		41D5A2F8263F901400DD8701 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41D5A2F9263F901400DD8701 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41D5A2F8263F901400DD8701 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		41D5A2FB263F901400DD8701 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41D5A2F8263F901400DD8701 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		41D5A2FD263F901400DD8701 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41D5A2F8263F901400DD8701 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+/* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
 		414DAE02262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodeld */ = {
 			isa = XCVersionGroup;
@@ -446,16 +469,6 @@
 			);
 			currentVersion = 414DAE03262E9F1E00AB5E38 /* LifeCycle_To_Do.xcdatamodel */;
 			path = LifeCycle_To_Do.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		4162C1ED2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4162C1EE2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodel */,
-			);
-			currentVersion = 4162C1EE2637CC610091E9AF /* LifeCycle-DataModel.xcdatamodel */;
-			path = "LifeCycle-DataModel.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

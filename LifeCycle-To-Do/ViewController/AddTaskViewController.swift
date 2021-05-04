@@ -25,9 +25,9 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func addTaskAction(_ sender: Any) {
-        let dueDate = dueDatePicker.date
+        let dueTime = dueDatePicker.date
         if let name = taskNameTextField.text, !name.isEmpty {
-            let _ = databaseController?.addTask(name: name, dueDate: dueDate)
+            let _ = databaseController?.addTask(name: name, dueTime: dueTime)
             navigationController?.popViewController(animated: true)
             return
         }

@@ -20,10 +20,11 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
     let CELL_MANAGE = "manageCell"
     let CELL_FITNESS = "fitnessCell"
     let CELL_HABIT = "habitCell"
-    let CELL_REMINDER = "reminderCell"
+    let CELL_TASK = "taskCell"
     
     var current_habits: [Habit] = []
     var current_tasks: [Task] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,28 +80,62 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         tableView.reloadData()
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 1:
+            return "Fitness"
+        case 2:
+            return "Habit"
+        case 3:
+            return "Reminder"
+        default:
+            return ""
+        }
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.tableView.register(HabitTableViewCell.self, forCellReuseIdentifier: CELL_HABIT)
-        self.tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: CELL_REMINDER)
-        
-        
-        if indexPath.section == SECTION_HABIT {
+
+        if indexPath.section == SECTION_MANAGE {
+            let manageCell = tableView.dequeueReusableCell(withIdentifier: CELL_MANAGE, for: indexPath)
+            return manageCell
+        }
+        else if indexPath.section == SECTION_FITNESS{
+            let fitnessCell = tableView.dequeueReusableCell(withIdentifier: CELL_FITNESS, for: indexPath)
+            return fitnessCell
+        }
+        else if indexPath.section == SECTION_HABIT {
             let habitCell = tableView.dequeueReusableCell(withIdentifier: CELL_HABIT, for: indexPath)
             let habit = current_habits[indexPath.row]
             
             habitCell.textLabel?.text = habit.name
+            habitCell.detailTextLabel?.text = "Keep Days: \(String(describing: habit.days!))"
             return habitCell
         }
  
-        let reminderCell = tableView.dequeueReusableCell(withIdentifier: CELL_REMINDER, for: indexPath)
+        let taskCell = tableView.dequeueReusableCell(withIdentifier: CELL_TASK, for: indexPath)
         let task = current_tasks[indexPath.row]
             
-        reminderCell.textLabel?.text = task.name
-        return reminderCell
+        taskCell.textLabel?.text = task.name
+        return taskCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+            case SECTION_HABIT:
+                let habit = current_habits[indexPath.row]
+                databaseController?.addDayToHabit(habit: habit)
+                tableView.deselectRow(at: indexPath, animated: true)
+            case SECTION_REMINDER:
+                let task = current_tasks[indexPath.row]
+                databaseController?.deleteTask(task: task)
+                tableView.deselectRow(at: indexPath, animated: true)
+            default:
+                tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
 
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
