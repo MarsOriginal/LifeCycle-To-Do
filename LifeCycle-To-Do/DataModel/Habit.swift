@@ -12,4 +12,5 @@ class Habit: NSObject, Codable {
     @DocumentID var id: String?
     var name: String?
     var days: Int?
+    var checkDate: Date?
 }

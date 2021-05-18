@@ -7,16 +7,36 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var databaseController: DatabaseProtocol?
-
+    
+    let IDENTIFIER = "edu.monash.LifeCycle-To-Do"
+    var notificationsEnabled = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         databaseController = FirebaseController()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, error in
+            if granted {
+                self.notificationsEnabled = granted
+                UNUserNotificationCenter.current().delegate = self
+                
+                
+                let acceptAction = UNNotificationAction(identifier: "accept", title: "Accept", options: .foreground)
+                let declineAction = UNNotificationAction(identifier: "decline", title: "Decline", options: .destructive)
+                let commentAction = UNTextInputNotificationAction(identifier: "comment", title: "Comment", options: .authenticationRequired, textInputButtonTitle: "Send", textInputPlaceholder: "Share your thoughts..")
+                
+                // Set up the category
+                let appCategory = UNNotificationCategory(identifier: self.IDENTIFIER, actions: [acceptAction, declineAction, commentAction], intentIdentifiers: [], options: UNNotificationCategoryOptions(rawValue: 0))
+                
+                // Register the category just created with the notification centre
+                UNUserNotificationCenter.current().setNotificationCategories([appCategory])
+            }
+        }
         return true
     }
 
@@ -77,6 +97,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Notification arrived")
+        
+        completionHandler(.banner)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.content.categoryIdentifier == IDENTIFIER {
+            switch response.actionIdentifier {
+            
+            case "accept":
+                print("accept")
+            case "decline":
+                print("decline")
+            case "comment":
+                print("comment")
+                if let response = response as? UNTextInputNotificationResponse {
+                    print(response.userText)
+                    UserDefaults.standard.set(response.userText, forKey: "response")
+                }
+            default:
+                print("default")
+            }
+        }
+        
+        completionHandler()
     }
 
 }

@@ -220,7 +220,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             guard let task = parsedTask else {
                 print("Document doesn't exist")
-                return;
+                return
             }
             
             

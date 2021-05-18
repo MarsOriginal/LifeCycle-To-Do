@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginTableViewController: UITableViewController {
     
@@ -16,15 +17,29 @@ class LoginTableViewController: UITableViewController {
     let CELL_PASSWORD = "passwordCell"
     let CELL_BUTTON = "loginButtonCell"
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var passworTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
+    var authHandle: AuthStateDidChangeListenerHandle?
     
+    override func viewWillAppear(_ animated: Bool) {
+//        authHandle = Auth.auth().addStateDidChangeListener() {
+//            (auth, user) in
+//            guard user != nil else { return }
+//            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+//        }
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let authHandle = authHandle else { return }
+        Auth.auth().removeStateDidChangeListener(authHandle)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //let credential = EmailAuthProvider.credential(withEmail: , password: password)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,10 +48,58 @@ class LoginTableViewController: UITableViewController {
     }
     
 
-    @IBAction func login(_ sender: Any) {
+    func loginToAccount(){
+        guard let password = passwordTextField.text else {
+         displayMessage(title: "Error", message: "Please enter a password")
+         return
+        }
+
+        guard let email = emailTextField.text else {
+         displayMessage(title: "Error", message: "Please enter an email")
+         return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (user, error) in
+            if let error = error {
+                self.displayMessage(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
     
-    @IBAction func register(_ sender: Any) {
+    func registerAccount(){
+        guard let password = passwordTextField.text else {
+            displayMessage(title: "Error", message: "Please enter a password")
+            return
+        }
+
+        guard let email = emailTextField.text else {
+            displayMessage(title: "Error", message: "Please enter an email")
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) {
+            (user, error) in
+            if let error = error {
+                self.displayMessage(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    @IBAction func login(_ sender: UIButton) {
+        guard sender == loginButton else {
+            debugPrint("Invalid Button!")
+            return
+        }
+        loginToAccount()
+        debugPrint("Login")
+    }
+    
+    @IBAction func register(_ sender: UIButton) {
+        guard sender == registerButton else {
+            debugPrint("Invalid Button!")
+            return
+        }
+        registerAccount()
+        debugPrint("Register")
     }
     
     // MARK: - Table view data source

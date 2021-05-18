@@ -8,7 +8,6 @@
 import UIKit
 
 class TodayTableViewController: UITableViewController, DatabaseListener {
-    @IBOutlet weak var stepsTextField: UITextField!
     weak var databaseController: DatabaseProtocol?
     var listenerType = ListenerType.all
     
@@ -38,6 +37,8 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         databaseController = appDelegate?.databaseController
     }
     
+    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
@@ -116,24 +117,81 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         let task = current_tasks[indexPath.row]
             
         taskCell.textLabel?.text = task.name
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yy, HH:mm"
+        taskCell.detailTextLabel?.text = formatter.string(for: task.dueTime)
         return taskCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
             case SECTION_HABIT:
-                let habit = current_habits[indexPath.row]
-                databaseController?.addDayToHabit(habit: habit)
                 tableView.deselectRow(at: indexPath, animated: true)
             case SECTION_REMINDER:
-                let task = current_tasks[indexPath.row]
-                databaseController?.deleteTask(task: task)
                 tableView.deselectRow(at: indexPath, animated: true)
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
         }
     }
+    
+    override func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "dd-MM-YYYY"
+        switch indexPath.section {
+        case SECTION_HABIT:
+            if dateformatter.string(from: current_habits[indexPath.row].checkDate ?? Date(timeIntervalSinceReferenceDate: -100000000)) != dateformatter.string(from: Date()) {
+                let action = UIContextualAction(style: .normal,
+                                                title: "Check") { [weak self] (action, view, completionHandler) in
+                                                    self?.handleCheckForHabit(indexPath: indexPath)
+                                                    completionHandler(true)
+                }
+                action.backgroundColor = .systemBlue
+                return UISwipeActionsConfiguration(actions: [action])
+            }
+            let action = UIContextualAction(style: .normal,
+                                            title: "Check") { [weak self] (action, view, completionHandler) in
+                                                self?.handleAlertForHabit(indexPath: indexPath)
+                                                completionHandler(true)
+            }
+            action.backgroundColor = .systemBlue
+            return UISwipeActionsConfiguration(actions: [action])
+            
+        case SECTION_REMINDER:
+            let action = UIContextualAction(style: .destructive,
+                                            title: "Check") { [weak self] (action, view, completionHandler) in
+                self?.handleCheckForTask(indexPath: indexPath)
+                                                completionHandler(true)
+            }
+            action.backgroundColor = .systemBlue
+            return UISwipeActionsConfiguration(actions: [action])
+        default:
+            return nil
+        }
 
+    }
+
+    private func handleCheckForTask(indexPath: IndexPath){
+        let task = current_tasks[indexPath.row]
+        databaseController?.deleteTask(task: task)
+    }
+    
+    private func handleCheckForHabit(indexPath: IndexPath){
+        let habit = current_habits[indexPath.row]
+        current_habits[indexPath.row].checkDate = Date()
+        databaseController?.addDayToHabit(habit: habit)
+    }
+    
+    private func handleAlertForHabit(indexPath: IndexPath){
+        let alert = UIAlertController(title: "Confirmation", message: "You have checked today, Do you want check this habit again?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            self.handleCheckForHabit(indexPath: indexPath)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
 
     
     /*
