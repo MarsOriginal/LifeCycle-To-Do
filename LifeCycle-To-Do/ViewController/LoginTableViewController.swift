@@ -21,6 +21,7 @@ class LoginTableViewController: UITableViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var anonymouslyLoginButton: UIButton!
     
     var authHandle: AuthStateDidChangeListenerHandle?
     
@@ -66,6 +67,14 @@ class LoginTableViewController: UITableViewController {
         }
     }
     
+    func anonymouslyLoginToAccount(){
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
+        }
+    }
+    
     func registerAccount(){
         guard let password = passwordTextField.text else {
             displayMessage(title: "Error", message: "Please enter a password")
@@ -101,12 +110,19 @@ class LoginTableViewController: UITableViewController {
         registerAccount()
         debugPrint("Register")
     }
+    @IBAction func anonymouslyLogin(_ sender: UIButton) {
+        guard sender == anonymouslyLoginButton else {
+            debugPrint("Invalid Button!")
+            return
+        }
+        debugPrint("Anonymously Login")
+    }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

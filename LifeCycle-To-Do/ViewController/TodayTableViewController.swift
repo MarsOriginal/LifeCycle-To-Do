@@ -12,12 +12,10 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
     var listenerType = ListenerType.all
     
     let SECTION_MANAGE = 0
-    let SECTION_FITNESS = 1
-    let SECTION_HABIT = 2
-    let SECTION_REMINDER = 3
+    let SECTION_HABIT = 1
+    let SECTION_REMINDER = 2
     
     let CELL_MANAGE = "manageCell"
-    let CELL_FITNESS = "fitnessCell"
     let CELL_HABIT = "habitCell"
     let CELL_TASK = "taskCell"
     
@@ -28,11 +26,6 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
     }
@@ -52,14 +45,11 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == SECTION_MANAGE {
-            return 1
-        }
-        else if section == SECTION_FITNESS {
             return 1
         }
         else if section == SECTION_HABIT {
@@ -83,11 +73,9 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 1:
-            return "Fitness"
-        case 2:
+        case SECTION_HABIT:
             return "Habit"
-        case 3:
+        case SECTION_REMINDER:
             return "Reminder"
         default:
             return ""
@@ -99,10 +87,6 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         if indexPath.section == SECTION_MANAGE {
             let manageCell = tableView.dequeueReusableCell(withIdentifier: CELL_MANAGE, for: indexPath)
             return manageCell
-        }
-        else if indexPath.section == SECTION_FITNESS{
-            let fitnessCell = tableView.dequeueReusableCell(withIdentifier: CELL_FITNESS, for: indexPath)
-            return fitnessCell
         }
         else if indexPath.section == SECTION_HABIT {
             let habitCell = tableView.dequeueReusableCell(withIdentifier: CELL_HABIT, for: indexPath)

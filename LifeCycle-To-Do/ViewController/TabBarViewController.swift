@@ -1,31 +1,21 @@
 //
-//  MyProfileViewController.swift
+//  TabBarViewController.swift
 //  LifeCycle-To-Do
 //
-//  Created by MARS on 25/4/21.
+//  Created by MARS on 18/5/21.
 //
 
 import UIKit
-import FirebaseAuth
 
-class MyProfileViewController: UIViewController {
+class TabBarViewController: UITabBarController {
 
-    @IBOutlet weak var signOutButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func signOutAction(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
 

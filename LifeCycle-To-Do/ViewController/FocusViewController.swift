@@ -7,10 +7,37 @@
 
 import UIKit
 
+struct Advice: Codable {
+    var slip: Slip
+    
+    private enum CodingKeys: String, CodingKey {
+        case slip
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.slip = try container.decodeIfPresent(Slip.self, forKey: .slip)!
+    }
+    
+}
+
+struct Slip: Codable {
+    var id: Int
+    var advice: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case advice
+    }
+}
+
 class FocusViewController: UIViewController {
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var adviceLabel: UILabel!
     
+    let progress = Progress(totalUnitCount: 100)
     let IDENTIFIER = "edu.monash.LifeCycle-To-Do"
     
     var hours = 0
@@ -18,9 +45,13 @@ class FocusViewController: UIViewController {
     let state = State.inital
     
     var timer: Timer! = nil
-     let duration = 0
+    let duration = 0
     
     var totalSeconds = 0
+    var runningSeconds = 0
+    var totalInSecs = 0
+    
+    var adviceString = ""
     
     enum State {
         case inital
@@ -35,9 +66,37 @@ class FocusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressView.progress = 0.0
+        
+        let jsonURL = URL(string: "https://api.adviceslip.com/advice")
 
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: jsonURL!) { (data, response, error) in
+            if let error = error {
+                print(error)
+            }
+            else if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let setData = try decoder.decode(Advice.self, from: data)
+                    
+                    self.adviceString = setData.slip.advice
+                    
+                    DispatchQueue.main.async {
+                        self.adviceLabel.text = self.adviceString
+                        print(self.adviceString)
+                    }
+                    
+                } catch {
+                    print(error)
+                }
+            }
+        }
+
+        dataTask.resume()
     }
     
+    // Initialize the timer duration
     @IBAction func edit(_ sender: Any) {
         var durationTextField: UITextField?
         
@@ -47,17 +106,14 @@ class FocusViewController: UIViewController {
         let submitAction = UIAlertAction(title: "Submit", style: UIAlertAction.Style.default) {
             (action) -> Void in
               if let duration = durationTextField?.text {
-                if Int(duration)! > 0 && Int(duration)! < 60 {
-                    self.durationLabel.text = String(format: "%02d:%02d", 0, Int(duration)!)
+                if Int(duration)! >= 1 && Int(duration)! <= 180 {
+                    self.durationLabel.text = String(format: "%02d:%02d", Int(duration)!, 0)
                     let state = State.ready
                     self.totalSeconds = Int(duration)! * 60
+                    self.totalInSecs = Int(duration)! * 60
                 }
-                else if Int(duration)! > 60 {
-                    let hours = Int(duration)! / 60
-                    let mins = Int(duration)! % 60
-                    self.durationLabel.text = String(format: "%02d:%02d", hours, mins)
-                    let state = State.ready
-                    self.totalSeconds = Int(duration)! * 60
+                else if Int(duration)! > 180 {
+                    self.displayMessage(title: "Rome was not built in a day", message: "Take it easy and break your focus time into some smaller task")
                 }
                 else{
                     self.displayMessage(title: "Someting wrong", message: "Please enter valid duration")
@@ -66,6 +122,7 @@ class FocusViewController: UIViewController {
               } else {
                     self.displayMessage(title: "Someting wrong", message: "Please enter valid duration")
               }
+            let runningSeconds = 0
 
         }
         
@@ -78,6 +135,7 @@ class FocusViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // Logic of timer running
     @objc func updateTimer() {
         if totalSeconds == 0 {
             // Stop countdown and active alarm
@@ -99,21 +157,21 @@ class FocusViewController: UIViewController {
         }
         else {
             totalSeconds -= 1
-            if totalSeconds >= 3600 {
+            runningSeconds += 1
+            if totalSeconds >= 60 {
                 let hours = totalSeconds/(60*60)
-                let mins = (totalSeconds % (60*60))/60
-                self.durationLabel.text = String(format: "%02d:%02d", hours, mins)
+                let mins = totalSeconds/60
+                let secs = totalSeconds%60
+                self.durationLabel.text = String(format: "%02d:%02d", mins, secs)
             }
-            else if (totalSeconds < 3600) && (totalSeconds >= 60) {
-                let hours = 0
-                let mins = totalSeconds / 60
-                self.durationLabel.text = String(format: "%02d:%02d", hours, mins)
-            }
+
             else {
-                let hours = 0
-                let mins = 1
-                self.durationLabel.text = String(format: "%02d:%02d", hours, mins)
+                let mins = 0
+                let secs = totalSeconds
+                self.durationLabel.text = String(format: "%02d:%02d", mins, secs)
             }
+            self.progressView.setProgress(Float(Float(runningSeconds)/Float(totalInSecs)), animated: true)
+
         }
     }
     
@@ -121,6 +179,33 @@ class FocusViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: (#selector(FocusViewController.updateTimer)), userInfo: nil, repeats: true)
         let state = State.running
     }
+    
+    // Have refer a bit from Workshop 5
+    func getAdvice(){
+        
+        let jsonURL = URL(string: "https://api.adviceslip.com/advice")
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: jsonURL!) { (data, response, error) in
+            if let error = error {
+                print(error)
+            }
+            else if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let setData = try decoder.decode(Advice.self, from: data)
+                    
+                    let adviceString = setData.slip.advice
+                    
+                } catch {
+                    print(error)
+                }
+            }
+        }
+
+        dataTask.resume()
+    }
+
     
     
     /*
