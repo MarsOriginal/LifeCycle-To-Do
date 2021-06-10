@@ -31,6 +31,8 @@ class LoginTableViewController: UITableViewController {
 //            guard user != nil else { return }
 //            self.performSegue(withIdentifier: "loginSegue", sender: nil)
 //        }
+        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,19 +53,24 @@ class LoginTableViewController: UITableViewController {
 
     func loginToAccount(){
         guard let password = passwordTextField.text else {
-         displayMessage(title: "Error", message: "Please enter a password")
-         return
+            displayMessage(title: "Error", message: "Please enter a password")
+            return
         }
 
         guard let email = emailTextField.text else {
-         displayMessage(title: "Error", message: "Please enter an email")
-         return
+            displayMessage(title: "Error", message: "Please enter an email")
+            return
         }
         Auth.auth().signIn(withEmail: email, password: password) {
             (user, error) in
             if let error = error {
-                self.displayMessage(title: "Error", message: error.localizedDescription)
+                self.displayMessage(title: "Login Failed", message: error.localizedDescription)
+                return
             }
+            
+            let stepViewController = self.storyboard?.instantiateViewController(identifier: "stepVC") as? UIViewController
+            stepViewController?.modalPresentationStyle = .fullScreen
+            self.present(stepViewController!, animated: true, completion: nil)
         }
     }
     
@@ -72,7 +79,12 @@ class LoginTableViewController: UITableViewController {
             guard let user = authResult?.user else { return }
             let isAnonymous = user.isAnonymous  // true
             let uid = user.uid
+            
+            let stepViewController = self.storyboard?.instantiateViewController(identifier: "stepVC") as? UIViewController
+            stepViewController?.modalPresentationStyle = .fullScreen
+            self.present(stepViewController!, animated: true, completion: nil)
         }
+
     }
     
     func registerAccount(){
@@ -90,7 +102,9 @@ class LoginTableViewController: UITableViewController {
             if let error = error {
                 self.displayMessage(title: "Error", message: error.localizedDescription)
             }
+            self.displayMessage(title: "Register Successful", message: "You can Login with your user name and password now!")
         }
+
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -115,6 +129,7 @@ class LoginTableViewController: UITableViewController {
             debugPrint("Invalid Button!")
             return
         }
+        anonymouslyLoginToAccount()
         debugPrint("Anonymously Login")
     }
     

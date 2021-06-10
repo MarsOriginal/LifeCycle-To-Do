@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class TodayTableViewController: UITableViewController, DatabaseListener {
     weak var databaseController: DatabaseProtocol?
@@ -28,6 +29,7 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
     }
     
     
@@ -62,13 +64,34 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
     
     
     func onHabitChange(change: DatabaseChange, currentHabits: [Habit]) {
-        current_habits = currentHabits
-        tableView.reloadData()
+        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+            if Auth.auth().currentUser != nil {
+              // User is signed in.
+                let user = Auth.auth().currentUser
+                print(user?.uid)
+                current_habits = currentHabits.filter({(myHabit) -> Bool in
+                                                        return myHabit.ownerId == user?.uid})
+                tableView.reloadData()
+            } else {
+              // No user is signed in.
+            }
+        }
+
     }
     
     func onTaskChange(change: DatabaseChange, currentTasks: [Task]) {
-        current_tasks = currentTasks
-        tableView.reloadData()
+        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+            if Auth.auth().currentUser != nil {
+              // User is signed in.
+                let user = Auth.auth().currentUser
+                current_tasks = currentTasks.filter({(myTask) -> Bool in
+                                                        return myTask.ownerId == user?.uid})
+                tableView.reloadData()
+            } else {
+              // No user is signed in.
+            }
+        }
+        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

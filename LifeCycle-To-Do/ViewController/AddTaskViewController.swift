@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AddTaskViewController: UIViewController {
     @IBOutlet weak var taskNameTextField: UITextField!
@@ -27,7 +28,16 @@ class AddTaskViewController: UIViewController {
     @IBAction func addTaskAction(_ sender: Any) {
         let dueTime = dueDatePicker.date
         if let name = taskNameTextField.text, !name.isEmpty {
-            let _ = databaseController?.addTask(name: name, dueTime: dueTime)
+            let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+                if Auth.auth().currentUser != nil {
+                  // User is signed in.
+                    let user = Auth.auth().currentUser
+                    let _ = databaseController?.addTask(name: name, dueTime: dueTime, ownerId: user!.uid)
+                } else {
+                  // No user is signed in.
+                }
+            }
+            
             navigationController?.popViewController(animated: true)
             return
         }

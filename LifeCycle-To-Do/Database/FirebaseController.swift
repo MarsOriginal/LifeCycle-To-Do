@@ -40,6 +40,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.setupTaskListener()
             self.setupHabitListener()
         }
+        
     }
     
     func addListener(listener: DatabaseListener) {
@@ -60,10 +61,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
-    func addHabit(name: String) -> Habit{
+    func addHabit(name: String, ownerId: String) -> Habit{
         let habit = Habit()
         habit.name = name
         habit.days = 0
+        habit.ownerId = ownerId
         
         do {
             if let habitRef = try habitsRef?.addDocument(from: habit) {
@@ -74,10 +76,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         return habit
     }
-    func addTask(name: String, dueTime: Date) -> Task{
+    func addTask(name: String, dueTime: Date, ownerId: String) -> Task{
         let task = Task()
         task.name = name
         task.dueTime = dueTime
+        task.ownerId = ownerId
         
         do {
             if let taskRef = try tasksRef?.addDocument(from: task) {

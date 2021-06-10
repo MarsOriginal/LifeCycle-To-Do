@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AddHabitViewController: UIViewController {
     @IBOutlet weak var habitNameTextField: UITextField!
@@ -21,8 +22,18 @@ class AddHabitViewController: UIViewController {
     }
     
     @IBAction func addHabit(_ sender: Any) {
+        // Refer from Offical Website of Firebase
         if let name = habitNameTextField.text, !name.isEmpty {
-            let _ = databaseController?.addHabit(name: name)
+            let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+                if Auth.auth().currentUser != nil {
+                  // User is signed in.
+                    let user = Auth.auth().currentUser
+                    let _ = databaseController?.addHabit(name: name, ownerId: user!.uid)
+                } else {
+                  // No user is signed in.
+                }
+            }
+
             navigationController?.popViewController(animated: true)
             return
         }

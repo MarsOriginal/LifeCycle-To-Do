@@ -12,5 +12,5 @@ class Task: NSObject, Codable {
     @DocumentID var id: String?
     var name: String?
     var dueTime: Date?
-    
+    var ownerId: String?
 }

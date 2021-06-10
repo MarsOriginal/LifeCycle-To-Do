@@ -13,4 +13,5 @@ class Habit: NSObject, Codable {
     var name: String?
     var days: Int?
     var checkDate: Date?
+    var ownerId: String?
 }

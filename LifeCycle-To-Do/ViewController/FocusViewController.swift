@@ -96,9 +96,11 @@ class FocusViewController: UIViewController {
         dataTask.resume()
     }
     
+    
     // Initialize the timer duration
     @IBAction func edit(_ sender: Any) {
         var durationTextField: UITextField?
+        durationTextField?.keyboardType = .numberPad
         
         let alertController = UIAlertController(
             title: "Set Tomato Clock", message: "Enter the duration that you want focus on your task", preferredStyle: UIAlertController.Style.alert)

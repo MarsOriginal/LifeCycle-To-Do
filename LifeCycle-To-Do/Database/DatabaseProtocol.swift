@@ -30,8 +30,8 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
 
-    func addHabit(name: String) -> Habit
-    func addTask(name: String, dueTime: Date) -> Task
+    func addHabit(name: String, ownerId: String) -> Habit
+    func addTask(name: String, dueTime: Date, ownerId: String) -> Task
     func deleteHabit(habit: Habit)
     func deleteTask(task: Task)
     func addDayToHabit(habit: Habit)
