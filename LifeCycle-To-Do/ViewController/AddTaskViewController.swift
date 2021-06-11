@@ -9,11 +9,14 @@ import UIKit
 import FirebaseAuth
 
 class AddTaskViewController: UIViewController {
+    // Item in view definition
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
     
+    // database related definiation
     weak var databaseController: DatabaseProtocol?
     
+    // View logic definition
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +28,7 @@ class AddTaskViewController: UIViewController {
         dueDatePicker.minimumDate = Date()
     }
     
+    // Action for submit the task's information, and pass to database
     @IBAction func addTaskAction(_ sender: Any) {
         let dueTime = dueDatePicker.date
         if let name = taskNameTextField.text, !name.isEmpty {
@@ -41,19 +45,7 @@ class AddTaskViewController: UIViewController {
             navigationController?.popViewController(animated: true)
             return
         }
-        // add some error Msg
-        var errorMessage = "Please Enter A Name"
+        let errorMessage = "Please Enter A Name"
         displayMessage(title: "Not all fields filled", message: errorMessage)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

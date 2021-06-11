@@ -1,3 +1,4 @@
+// !!!This whole file is copy from Moodle!!!
 //
 //  UIViewController+displayMessage.swift
 //  Lab03

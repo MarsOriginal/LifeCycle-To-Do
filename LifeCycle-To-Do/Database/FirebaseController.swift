@@ -43,6 +43,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    // Listener Setup
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         
@@ -61,6 +62,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
+    func cleanup() {}
+    
+    // CRUD Method: addHabit, addTask, deleteHabit, deleteTask, addDayToHabit, getHabitIndexByID, getHabitByID, getTaskIndexByID, getTaskByID
     func addHabit(name: String, ownerId: String) -> Habit{
         let habit = Habit()
         habit.name = name
@@ -114,7 +118,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
-    func cleanup() {}
     
     // Firebase Controller
     func getHabitIndexByID(_ id: String) -> Int? {

@@ -11,7 +11,7 @@ import FirebaseAuth
 class MyProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
-
+    // View logic setup
     override func viewDidLoad() {
         super.viewDidLoad()
         let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
@@ -26,6 +26,7 @@ class MyProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Signout action, and jump to login page
     @IBAction func signOutAction(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -38,15 +39,4 @@ class MyProfileViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

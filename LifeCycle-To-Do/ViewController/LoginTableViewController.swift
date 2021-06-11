@@ -9,32 +9,26 @@ import UIKit
 import FirebaseAuth
 
 class LoginTableViewController: UITableViewController {
-    
+    // Section Definition
     let SECTION_INPUT = 0
     let SECTION_BUTTON = 1
     
+    // Cell Definition
     let CELL_USERNAME = "userNameCell"
     let CELL_PASSWORD = "passwordCell"
     let CELL_BUTTON = "loginButtonCell"
     
+    // Reference Outlets Definition
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var anonymouslyLoginButton: UIButton!
     
+    // Firebase Auth Setup
     var authHandle: AuthStateDidChangeListenerHandle?
     
-    override func viewWillAppear(_ animated: Bool) {
-//        authHandle = Auth.auth().addStateDidChangeListener() {
-//            (auth, user) in
-//            guard user != nil else { return }
-//            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-//        }
-        
-
-    }
-    
+    // View Logic Setup
     override func viewWillDisappear(_ animated: Bool) {
         guard let authHandle = authHandle else { return }
         Auth.auth().removeStateDidChangeListener(authHandle)
@@ -42,15 +36,14 @@ class LoginTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let credential = EmailAuthProvider.credential(withEmail: , password: password)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-
+    
+    /*
+        Login process, call this function by the login Button, and if the password is incorrect
+        the account is not exist, there will display a message to user, and the purpose of give
+        these two situation one same message is increase security level.
+     */
     func loginToAccount(){
         guard let password = passwordTextField.text else {
             displayMessage(title: "Error", message: "Please enter a password")
@@ -74,6 +67,11 @@ class LoginTableViewController: UITableViewController {
         }
     }
     
+    
+    /*
+        Same process with loginToAccount, but this method doesn't need a registered account,
+        user can just click it to enter this app for convinence, but use this method may cause data lose.
+     */
     func anonymouslyLoginToAccount(){
         Auth.auth().signInAnonymously() { (authResult, error) in
             guard let user = authResult?.user else { return }
@@ -87,6 +85,10 @@ class LoginTableViewController: UITableViewController {
 
     }
     
+    /*
+        Create a account with security rule, the rule is the length of password
+        must be longer or equals to 6.
+     */
     func registerAccount(){
         guard let password = passwordTextField.text else {
             displayMessage(title: "Error", message: "Please enter a password")
@@ -107,6 +109,7 @@ class LoginTableViewController: UITableViewController {
 
     }
     
+    // Button's Actions for: login, anonymouslylogin and register.
     @IBAction func login(_ sender: UIButton) {
         guard sender == loginButton else {
             debugPrint("Invalid Button!")
@@ -133,8 +136,7 @@ class LoginTableViewController: UITableViewController {
         debugPrint("Anonymously Login")
     }
     
-    // MARK: - Table view data source
-
+    // TableView Setup
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
@@ -146,60 +148,4 @@ class LoginTableViewController: UITableViewController {
         }
         return 1
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

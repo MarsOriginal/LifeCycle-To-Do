@@ -9,31 +9,36 @@ import UIKit
 import FirebaseAuth
 
 class TodayTableViewController: UITableViewController, DatabaseListener {
+    // Database related Setup
     weak var databaseController: DatabaseProtocol?
     var listenerType = ListenerType.all
     
+    // Section Setup
     let SECTION_MANAGE = 0
     let SECTION_HABIT = 1
     let SECTION_REMINDER = 2
     
+    // Cell Setup
     let CELL_MANAGE = "manageCell"
     let CELL_HABIT = "habitCell"
     let CELL_TASK = "taskCell"
     
+    /*
+        Initialize arrays for habit and task, these two will record current habits and task
+        for the user who login currently.
+     */
     var current_habits: [Habit] = []
     var current_tasks: [Task] = []
 
     
+    // View Logic Setup
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-        
     }
     
-    
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
@@ -44,7 +49,7 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         databaseController?.removeListener(listener: self)
     }
     
-    // MARK: - Table view data source
+    // TableView Setup
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
@@ -62,38 +67,6 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         }
     }
     
-    
-    func onHabitChange(change: DatabaseChange, currentHabits: [Habit]) {
-        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
-            if Auth.auth().currentUser != nil {
-              // User is signed in.
-                let user = Auth.auth().currentUser
-                print(user?.uid)
-                current_habits = currentHabits.filter({(myHabit) -> Bool in
-                                                        return myHabit.ownerId == user?.uid})
-                tableView.reloadData()
-            } else {
-              // No user is signed in.
-            }
-        }
-
-    }
-    
-    func onTaskChange(change: DatabaseChange, currentTasks: [Task]) {
-        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
-            if Auth.auth().currentUser != nil {
-              // User is signed in.
-                let user = Auth.auth().currentUser
-                current_tasks = currentTasks.filter({(myTask) -> Bool in
-                                                        return myTask.ownerId == user?.uid})
-                tableView.reloadData()
-            } else {
-              // No user is signed in.
-            }
-        }
-        
-    }
-
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case SECTION_HABIT:
@@ -147,6 +120,7 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         dateformatter.dateFormat = "dd-MM-YYYY"
         switch indexPath.section {
         case SECTION_HABIT:
+            // Swipe process of Habit cell
             if dateformatter.string(from: current_habits[indexPath.row].checkDate ?? Date(timeIntervalSinceReferenceDate: -100000000)) != dateformatter.string(from: Date()) {
                 let action = UIContextualAction(style: .normal,
                                                 title: "Check") { [weak self] (action, view, completionHandler) in
@@ -165,6 +139,7 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
             return UISwipeActionsConfiguration(actions: [action])
             
         case SECTION_REMINDER:
+            // Swipe process of task cell
             let action = UIContextualAction(style: .destructive,
                                             title: "Check") { [weak self] (action, view, completionHandler) in
                 self?.handleCheckForTask(indexPath: indexPath)
@@ -177,18 +152,55 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         }
 
     }
+    
+    
+    // Tracking habits from firebase
+    func onHabitChange(change: DatabaseChange, currentHabits: [Habit]) {
+        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+            if Auth.auth().currentUser != nil {
+              // User is signed in.
+                let user = Auth.auth().currentUser
+                print(user?.uid)
+                current_habits = currentHabits.filter({(myHabit) -> Bool in
+                                                        return myHabit.ownerId == user?.uid})
+                tableView.reloadData()
+            } else {
+              // No user is signed in.
+            }
+        }
 
+    }
+    
+    // Tracking tasks from firebase
+    func onTaskChange(change: DatabaseChange, currentTasks: [Task]) {
+        let handle = Auth.auth().addStateDidChangeListener { [self] (auth, user) in
+            if Auth.auth().currentUser != nil {
+              // User is signed in.
+                let user = Auth.auth().currentUser
+                current_tasks = currentTasks.filter({(myTask) -> Bool in
+                                                        return myTask.ownerId == user?.uid})
+                tableView.reloadData()
+            } else {
+              // No user is signed in.
+            }
+        }
+        
+    }
+
+    // Enable the check task process, invoke it by left swipe
     private func handleCheckForTask(indexPath: IndexPath){
         let task = current_tasks[indexPath.row]
         databaseController?.deleteTask(task: task)
     }
     
+    // Enable the check habit process, invoke it by left swipe
     private func handleCheckForHabit(indexPath: IndexPath){
         let habit = current_habits[indexPath.row]
         current_habits[indexPath.row].checkDate = Date()
         databaseController?.addDayToHabit(habit: habit)
     }
     
+    // To avoid wrong operating of mutiple checking within one day
     private func handleAlertForHabit(indexPath: IndexPath){
         let alert = UIAlertController(title: "Confirmation", message: "You have checked today, Do you want check this habit again?", preferredStyle: .alert)
         
@@ -199,51 +211,4 @@ class TodayTableViewController: UITableViewController, DatabaseListener {
         
         self.present(alert, animated: true)
     }
-
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

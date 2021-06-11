@@ -9,10 +9,13 @@ import UIKit
 import FirebaseAuth
 
 class AddHabitViewController: UIViewController {
+    // Item in view definition
     @IBOutlet weak var habitNameTextField: UITextField!
     
+    // database related definiation
     weak var databaseController: DatabaseProtocol?
 
+    // View logic definition
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,7 @@ class AddHabitViewController: UIViewController {
         databaseController = appDelegate?.databaseController
     }
     
+    // Action for submit the habit's information, and pass to database
     @IBAction func addHabit(_ sender: Any) {
         // Refer from Offical Website of Firebase
         if let name = habitNameTextField.text, !name.isEmpty {
@@ -37,20 +41,7 @@ class AddHabitViewController: UIViewController {
             navigationController?.popViewController(animated: true)
             return
         }
-        // add some error Msg
-
+        let errorMessage = "Please Enter A Name"
+        displayMessage(title: "Not all fields filled", message: errorMessage)
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
